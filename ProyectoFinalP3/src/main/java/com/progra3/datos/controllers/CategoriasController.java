@@ -18,11 +18,11 @@ import com.progra3.datos.repositories.CategoriasRepository;
 @RestController
 @RequestMapping("/categorias")
 public class CategoriasController {
-	
+
 	@Autowired
 	CategoriasRepository repository;
 
-	// mostrar
+	// Muestra las categorías que tenemos en lista
 	@GetMapping
 
 	public Iterable<CategoriasEntity> findAll() {
@@ -31,51 +31,50 @@ public class CategoriasController {
 		return listaCategorias;
 	}
 
-	// Crear
+	// Permite crear una nueva categoría
 
 	@PostMapping
 	public CategoriasEntity createCategoria(@RequestBody CategoriasEntity categoria) {
 		return repository.save(categoria);
 	}
 
-	// Buscar
+	// Busca categorias por id
 	@GetMapping(value = "/{id}")
 	public CategoriasEntity getCategoriasEntity(@PathVariable(name = "id") Long id) {
 		Optional<CategoriasEntity> categoria = repository.findById(id);
 
 		CategoriasEntity result = null;
-		
-		if(categoria.isPresent()) {
+
+		if (categoria.isPresent()) {
 			result = categoria.get();
 		}
-		return result; 
+		return result;
 
 	}
-	
-	//Borrar
-	@DeleteMapping(value="/{id}")
-	public void borrarCategoria(@PathVariable(name="id")Long id) {
+
+	// Permite borrar una categoría
+	@DeleteMapping(value = "/{id}")
+	public void borrarCategoria(@PathVariable(name = "id") Long id) {
 		repository.deleteById(id);
 	}
-	
-	//actualizar
-	
-	@PutMapping(value="/{id}")
-	public CategoriasEntity actualizarCategoria(@PathVariable(name="id")Long id,
+
+	// Permite actualizar las informacion de las categorias que tenemos en nuestra lista
+	@PutMapping(value = "/{id}")
+	public CategoriasEntity actualizarCategoria(@PathVariable(name = "id") Long id,
 			@RequestBody CategoriasEntity categoria) {
-		Optional <CategoriasEntity> nuevaCategoria= repository.findById(id);
-		
+		Optional<CategoriasEntity> nuevaCategoria = repository.findById(id);
+
 		if (nuevaCategoria.isPresent()) {
-			
+
 			CategoriasEntity infActual = nuevaCategoria.get();
 			infActual.setId(categoria.getId());
 			infActual.setNombre(categoria.getNombre());
 			infActual.setDescripcion(categoria.getDescripcion());
 			infActual.setFecha(categoria.getFecha());
-			CategoriasEntity cModificada= repository.save(infActual);
+			CategoriasEntity cModificada = repository.save(infActual);
 			return cModificada;
 		}
 		return null;
 	}
-	
+
 }

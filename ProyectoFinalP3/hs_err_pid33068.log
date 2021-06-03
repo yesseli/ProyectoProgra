@@ -1,6 +1,6 @@
 #
 # There is insufficient memory for the Java Runtime Environment to continue.
-# Native memory allocation (mmap) failed to map 134217728 bytes for G1 virtual space
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
 # Possible reasons:
 #   The system is out of physical RAM or swap space
 #   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
@@ -18,7 +18,7 @@
 #     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
 # This output file may be truncated or incomplete.
 #
-#  Out of Memory Error (./open/src/hotspot/os/windows/os_windows.cpp:3321), pid=13584, tid=25680
+#  Out of Memory Error (./open/src/hotspot/share/memory/allocation.cpp:44), pid=33068, tid=33156
 #
 # JRE version:  (15.0.2+7) (build )
 # Java VM: OpenJDK 64-Bit Server VM (15.0.2+7-27, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
@@ -27,31 +27,25 @@
 
 ---------------  S U M M A R Y ------------
 
-Command Line: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=50953 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=localhost -Dspring.jmx.enabled=true -Dspring.application.admin.enabled=true -XX:TieredStopAtLevel=1 -Dspring.boot.project.name=ProyectoFinalP3 -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages com.progra3.datos.ProyectoFinalP3Application --spring.output.ansi.enabled=always
+Command Line: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=64188 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=localhost -Dspring.jmx.enabled=true -Dspring.application.admin.enabled=true -XX:TieredStopAtLevel=1 -Dspring.boot.project.name=ProyectoFinalP3 -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages com.progra3.datos.ProyectoFinalP3Application --spring.output.ansi.enabled=always
 
 Host: Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz, 4 cores, 7G,  Windows 10 , 64 bit Build 19041 (10.0.19041.928)
-Time: Sun May 23 22:33:05 2021 Hora estándar, América Central elapsed time: 0.043884 seconds (0d 0h 0m 0s)
+Time: Thu May 27 17:07:29 2021 Hora estándar, América Central elapsed time: 0.050250 seconds (0d 0h 0m 0s)
 
 ---------------  T H R E A D  ---------------
 
-Current thread (0x0000029cf1c7f100):  JavaThread "Unknown thread" [_thread_in_vm, id=25680, stack(0x000000a731e00000,0x000000a731f00000)]
+Current thread (0x00000163fb7b5f10):  JavaThread "Unknown thread" [_thread_in_vm, id=33156, stack(0x00000027e9a00000,0x00000027e9b00000)]
 
-Stack: [0x000000a731e00000,0x000000a731f00000]
+Stack: [0x00000027e9a00000,0x00000027e9b00000]
 Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
 V  [jvm.dll+0x62ae9a]
 V  [jvm.dll+0x7817a9]
 V  [jvm.dll+0x782f03]
 V  [jvm.dll+0x783563]
 V  [jvm.dll+0x216325]
-V  [jvm.dll+0x6281d9]
-V  [jvm.dll+0x61cf55]
-V  [jvm.dll+0x2cffdd]
-V  [jvm.dll+0x2cfe42]
-V  [jvm.dll+0x2d5e1c]
-V  [jvm.dll+0x32590a]
-V  [jvm.dll+0x324fd4]
-V  [jvm.dll+0x2a6f5a]
-V  [jvm.dll+0x2a80f8]
+V  [jvm.dll+0x8ebb2]
+V  [jvm.dll+0x2b0975]
+V  [jvm.dll+0x2a80ce]
 V  [jvm.dll+0x75e241]
 V  [jvm.dll+0x3341c4]
 V  [jvm.dll+0x73e926]
@@ -66,40 +60,34 @@ C  [ntdll.dll+0x52651]
 ---------------  P R O C E S S  ---------------
 
 Threads class SMR info:
-_java_thread_list=0x00007ffc927a4ff0, length=0, elements={
+_java_thread_list=0x00007ffca51e4ff0, length=0, elements={
 }
 
 Java Threads: ( => current thread )
 
 Other Threads:
-  0x0000029cf1cc1060 GCTaskThread "GC Thread#0" [stack: 0x000000a731f00000,0x000000a732000000] [id=9552]
-  0x0000029cf1cd2590 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000a732000000,0x000000a732100000] [id=2848]
-  0x0000029cf1cd2f40 ConcurrentGCThread "G1 Conc#0" [stack: 0x000000a732100000,0x000000a732200000] [id=23852]
+  0x00000163fb7f6640 GCTaskThread "GC Thread#0" [stack: 0x00000027e9b00000,0x00000027e9c00000] [id=14180]
 
-[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffc91f97e27]
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffca49d53a0]
 
 VM state: not at safepoint (not fully initialized)
 
 VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
-[0x0000029cf1c7ac30] Heap_lock - owner thread: 0x0000029cf1c7f100
+[0x00000163fb7b1020] Heap_lock - owner thread: 0x00000163fb7b5f10
 
 Heap address: 0x0000000081400000, size: 2028 MB, Compressed Oops mode: 32-bit
 CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
 Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
 
 Heap:
- garbage-first heap   total 131072K, used 0K [0x0000000081400000, 0x0000000100000000)
+ garbage-first heap   total 0K, used 0K [0x0000000081400000, 0x0000000100000000)
   region size 1024K, 0 young (0K), 0 survivors (0K)
  Metaspace       used 0K, capacity 0K, committed 0K, reserved 0K
   class space    used 0K, capacity 0K, committed 0K, reserved 0K
 
 Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, OA=open archive, CA=closed archive, TAMS=top-at-mark-start (previous, next)
 
-Card table byte_map: [0x0000029cf5a90000,0x0000029cf5e90000] _byte_map_base: 0x0000029cf5686000
-
-Marking Bits (Prev, Next): (CMBitMap*) 0x0000029cf1cc1610, (CMBitMap*) 0x0000029cf1cc1650
- Prev Bits: [0x0000029cf6290000, 0x0000029cf8240000)
- Next Bits: [0x0000029cf8240000, 0x0000029cfa1f0000)
+Card table byte_map: [0x00000163ff5c0000,0x00000163ff9c0000] _byte_map_base: 0x00000163ff1b6000
 
 GC Heap History (0 events):
 No events
@@ -117,17 +105,17 @@ Internal exceptions (0 events):
 No events
 
 Events (1 events):
-Event: 0.014 Loaded shared library C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\java.dll
+Event: 0.041 Loaded shared library C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\java.dll
 
 
 Dynamic libraries:
-0x00007ff6f2590000 - 0x00007ff6f259d000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\javaw.exe
+0x00007ff7b2060000 - 0x00007ff7b206d000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\javaw.exe
 0x00007ffce0c10000 - 0x00007ffce0e05000 	C:\WINDOWS\SYSTEM32\ntdll.dll
 0x00007ffce0b10000 - 0x00007ffce0bcd000 	C:\WINDOWS\System32\KERNEL32.DLL
 0x00007ffcde510000 - 0x00007ffcde7d8000 	C:\WINDOWS\System32\KERNELBASE.dll
 0x00007ffcdeb70000 - 0x00007ffcdec70000 	C:\WINDOWS\System32\ucrtbase.dll
-0x00007ffcc1c40000 - 0x00007ffcc1c59000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\VCRUNTIME140.dll
-0x00007ffcc1c60000 - 0x00007ffcc1c78000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\jli.dll
+0x00007ffcd5a20000 - 0x00007ffcd5a39000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\VCRUNTIME140.dll
+0x00007ffcd5880000 - 0x00007ffcd5898000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\jli.dll
 0x00007ffcdfee0000 - 0x00007ffce0080000 	C:\WINDOWS\System32\USER32.dll
 0x00007ffcde8b0000 - 0x00007ffcde8d2000 	C:\WINDOWS\System32\win32u.dll
 0x00007ffce0080000 - 0x00007ffce00aa000 	C:\WINDOWS\System32\GDI32.dll
@@ -136,31 +124,31 @@ Dynamic libraries:
 0x00007ffcd3ae0000 - 0x00007ffcd3d7a000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.844_none_ca00b6081b84eb1d\COMCTL32.dll
 0x00007ffcdf910000 - 0x00007ffcdf9ae000 	C:\WINDOWS\System32\msvcrt.dll
 0x00007ffcdfeb0000 - 0x00007ffcdfee0000 	C:\WINDOWS\System32\IMM32.DLL
-0x00007ffcdaea0000 - 0x00007ffcdaeac000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\vcruntime140_1.dll
-0x00007ffcac300000 - 0x00007ffcac391000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\msvcp140.dll
-0x00007ffc91ce0000 - 0x00007ffc9283e000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\server\jvm.dll
+0x00007ffcda400000 - 0x00007ffcda40c000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\vcruntime140_1.dll
+0x00007ffcd57e0000 - 0x00007ffcd5871000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\msvcp140.dll
+0x00007ffca4720000 - 0x00007ffca527e000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\server\jvm.dll
 0x00007ffce0430000 - 0x00007ffce04dc000 	C:\WINDOWS\System32\ADVAPI32.dll
 0x00007ffce0570000 - 0x00007ffce060b000 	C:\WINDOWS\System32\sechost.dll
 0x00007ffcdf3c0000 - 0x00007ffcdf4eb000 	C:\WINDOWS\System32\RPCRT4.dll
 0x00007ffce0560000 - 0x00007ffce0568000 	C:\WINDOWS\System32\PSAPI.DLL
-0x00007ffcd8d60000 - 0x00007ffcd8d69000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffcdb940000 - 0x00007ffcdb949000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
 0x00007ffce02e0000 - 0x00007ffce034b000 	C:\WINDOWS\System32\WS2_32.dll
-0x00007ffccf6a0000 - 0x00007ffccf6c7000 	C:\WINDOWS\SYSTEM32\WINMM.dll
 0x00007ffcd5ba0000 - 0x00007ffcd5baa000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffccf6a0000 - 0x00007ffccf6c7000 	C:\WINDOWS\SYSTEM32\WINMM.dll
 0x00007ffcdcf00000 - 0x00007ffcdcf12000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
-0x00007ffcd7890000 - 0x00007ffcd789a000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\jimage.dll
+0x00007ffcdb100000 - 0x00007ffcdb10a000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\jimage.dll
 0x00007ffcdc940000 - 0x00007ffcdcb24000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
 0x00007ffcc76c0000 - 0x00007ffcc76ec000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
 0x00007ffcdeaf0000 - 0x00007ffcdeb70000 	C:\WINDOWS\System32\bcryptPrimitives.dll
-0x00007ffcc16d0000 - 0x00007ffcc16f5000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\java.dll
+0x00007ffcd5b30000 - 0x00007ffcd5b55000 	C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\java.dll
 
 dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
 symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.844_none_ca00b6081b84eb1d;C:\Users\Yessi Mateo\Downloads\Programas\sts-4.10.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\server
 
 VM Arguments:
-jvm_args: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=50953 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=localhost -Dspring.jmx.enabled=true -Dspring.application.admin.enabled=true -XX:TieredStopAtLevel=1 -Dspring.boot.project.name=ProyectoFinalP3 -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages 
+jvm_args: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=64188 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=localhost -Dspring.jmx.enabled=true -Dspring.application.admin.enabled=true -XX:TieredStopAtLevel=1 -Dspring.boot.project.name=ProyectoFinalP3 -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages 
 java_command: com.progra3.datos.ProyectoFinalP3Application --spring.output.ansi.enabled=always
-java_class_path (initial): C:\Users\Yessi Mateo\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\ProyectoFinalP3\target\classes;C:\Users\Yessi Mateo\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\2.4.6\spring-boot-starter-data-jpa-2.4.6.jar;C:\Users\Yessi Mateo\.m2\repository\org\springframework\boot\spring-boot-starter-aop\2.4.6\spring-boot-starter-aop-2.4.6.jar;C:\Users\Yessi Mateo\.m2\repository\org\springframework\spring-aop\5.3.7\spring-aop-5.3.7.jar;C:\Users\Yessi Mateo\.m2\repository\org\aspectj\aspectjweaver\1.9.6\aspectjweaver-1.9.6.jar;C:\Users\Yessi Mateo\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\2.4.6\spring-boot-starter-jdbc-2.4.6.jar;C:\Users\Yessi Mateo\.m2\repository\com\zaxxer\HikariCP\3.4.5\HikariCP-3.4.5.jar;C:\Users\Yessi Mateo\.m2\repository\org\springframework\spring-jdbc\5.3.7\spring-jdbc-5.3.7.jar;C:\Users\Yessi Mateo\.m2\repository\jakarta\transaction\jakarta.transaction-api\1.3.3\jakarta.transaction-api-1.3.3.jar;C:\Users\Yessi Mateo\.m2\repository\jakarta\persistence\jakarta.persistence-api\2.2.3\jakarta.persistence-api-2.2.3.jar;C:\Users\Yessi Mateo\.m2\repository\org\hibernate\hibernate-core\5.4.31.Final\hibernate-core-5.4.31.Final.jar;C:\Users\Yessi Mateo\.m2\repository\org\jboss\logging\jboss-logging\3.4.1.Final\jboss-logging-3.4.1.Final.jar;C:\Users\Yessi Mateo\.m2\repository\org\javassist\javassist\3.27.0-GA\javassist-3.27.0-GA.jar;C:\Users\Yessi Mateo\.m2\repository\net\bytebuddy\byte-buddy\1.10.22\byte-buddy-1.10.22.jar;C:\Users\Yessi Mateo\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\Yessi Mateo\.m2\repository\org\jboss\jandex\2.2.3.Final\jandex-2.2.3.Final.jar;C:\Users\Yessi Mateo\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\Yessi Mateo\.m2\repository\org\dom4j\dom4j\2.1.3\dom4j-2.1.3.jar;C:\Users\Yessi Mateo\.m2\repository\org\hibernate\common\hibernate-commons-annotations\5.1.2.Final\hibernate-commons-annotations-5.1.2.Final.jar;C:\Us
+java_class_path (initial): C:\Users\Yessi Mateo\git\ProyectoProgra\ProyectoFinalP3\target\classes;C:\Users\Yessi Mateo\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\2.4.6\spring-boot-starter-data-jpa-2.4.6.jar;C:\Users\Yessi Mateo\.m2\repository\org\springframework\boot\spring-boot-starter-aop\2.4.6\spring-boot-starter-aop-2.4.6.jar;C:\Users\Yessi Mateo\.m2\repository\org\springframework\spring-aop\5.3.7\spring-aop-5.3.7.jar;C:\Users\Yessi Mateo\.m2\repository\org\aspectj\aspectjweaver\1.9.6\aspectjweaver-1.9.6.jar;C:\Users\Yessi Mateo\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\2.4.6\spring-boot-starter-jdbc-2.4.6.jar;C:\Users\Yessi Mateo\.m2\repository\com\zaxxer\HikariCP\3.4.5\HikariCP-3.4.5.jar;C:\Users\Yessi Mateo\.m2\repository\org\springframework\spring-jdbc\5.3.7\spring-jdbc-5.3.7.jar;C:\Users\Yessi Mateo\.m2\repository\jakarta\transaction\jakarta.transaction-api\1.3.3\jakarta.transaction-api-1.3.3.jar;C:\Users\Yessi Mateo\.m2\repository\jakarta\persistence\jakarta.persistence-api\2.2.3\jakarta.persistence-api-2.2.3.jar;C:\Users\Yessi Mateo\.m2\repository\org\hibernate\hibernate-core\5.4.31.Final\hibernate-core-5.4.31.Final.jar;C:\Users\Yessi Mateo\.m2\repository\org\jboss\logging\jboss-logging\3.4.1.Final\jboss-logging-3.4.1.Final.jar;C:\Users\Yessi Mateo\.m2\repository\org\javassist\javassist\3.27.0-GA\javassist-3.27.0-GA.jar;C:\Users\Yessi Mateo\.m2\repository\net\bytebuddy\byte-buddy\1.10.22\byte-buddy-1.10.22.jar;C:\Users\Yessi Mateo\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\Yessi Mateo\.m2\repository\org\jboss\jandex\2.2.3.Final\jandex-2.2.3.Final.jar;C:\Users\Yessi Mateo\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\Yessi Mateo\.m2\repository\org\dom4j\dom4j\2.1.3\dom4j-2.1.3.jar;C:\Users\Yessi Mateo\.m2\repository\org\hibernate\common\hibernate-commons-annotations\5.1.2.Final\hibernate-commons-annotations-5.1.2.Final.jar;C:\Users\Yessi Mateo\.m2\repository\org\g
 Launcher Type: SUN_STANDARD
 
 [Global flags]
@@ -206,14 +194,14 @@ PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
 
 OS:
  Windows 10 , 64 bit Build 19041 (10.0.19041.928)
-OS uptime: 3 days 4:16 hours
+OS uptime: 6 days 22:51 hours
 
 CPU: total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 142 stepping 9 microcode 0xb4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, vzeroupper, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, fma, clflush, clflushopt
 
-Memory: 4k page, system-wide physical 8107M (1444M free)
-TotalPageFile size 10016M (AvailPageFile size 74M)
-current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
-current process commit charge ("private bytes"): 49M, peak: 177M
+Memory: 4k page, system-wide physical 8107M (2083M free)
+TotalPageFile size 10016M (AvailPageFile size 128M)
+current process WorkingSet (physical memory assigned to process): 9M, peak: 9M
+current process commit charge ("private bytes"): 45M, peak: 46M
 
 vm_info: OpenJDK 64-Bit Server VM (15.0.2+7-27) for windows-amd64 JRE (15.0.2+7-27), built on Dec  7 2020 20:02:38 by "mach5one" with unknown MS VC++:1925
 

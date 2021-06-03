@@ -22,7 +22,7 @@ public class PagosController {
 	@Autowired
 	PagosRepository repository;
 
-	// Mostrar
+	// Muestra la lista de pagos
 	@GetMapping
 	public Iterable<PagosEntity> findAll() {
 		Iterable<PagosEntity> listaPagos = repository.findAll();
@@ -30,7 +30,7 @@ public class PagosController {
 
 	}
 
-	// crear
+	// Nos permite registrar un nuevo pago
 
 	@PostMapping
 	public PagosEntity createPago(@RequestBody PagosEntity pago) {
@@ -38,7 +38,7 @@ public class PagosController {
 
 	}
 
-	// buscar
+	// Busca pagos especificos usando el id
 
 	@GetMapping(value = "/{id}")
 	public PagosEntity getPagosEntity(@PathVariable(name = "id") Long id) {
@@ -53,7 +53,7 @@ public class PagosController {
 		return result;
 	}
 
-	// Actualizar
+	// Permite actualizar los datos de un pago
 
 	@PutMapping(value = "/{id}")
 	public PagosEntity actualizarPagos(@PathVariable(name = "id") Long id, @RequestBody PagosEntity pago) {
@@ -74,7 +74,7 @@ public class PagosController {
 
 	}
 
-	// borrar
+	// Permite borrar un pago
 	@DeleteMapping(value = "/{id}")
 	public void borrarPago(@PathVariable(name = "id") Long id) {
 		repository.deleteById(id);

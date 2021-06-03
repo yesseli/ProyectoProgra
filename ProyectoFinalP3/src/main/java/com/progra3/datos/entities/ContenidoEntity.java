@@ -23,11 +23,11 @@ public class ContenidoEntity {
 	@Column(name = "Resumen")
 	private String Resumen;
 
-	@Column(name = "idCategoria")
-	private Long idCategoria;
+	@Column(name = "categoryId")
+	private Long categoryId;
 
-	@Column(name = "IdGenero")
-	private Long IdGenero;
+	@Column(name = "generoId")
+	private Long generoId;
 
 	@Column(name = "Fecha")
 	private String Fecha;
@@ -56,15 +56,6 @@ public class ContenidoEntity {
 		Resumen = resumen;
 	}
 
-	public Long getIdGenero() {
-
-		return IdGenero;
-	}
-
-	public void setIdGenero(Long idGenero) {
-		IdGenero = idGenero;
-	}
-
 	public String getFecha() {
 		return Fecha;
 	}
@@ -73,14 +64,23 @@ public class ContenidoEntity {
 		Fecha = fecha;
 	}
 
-	public Long getIdCategoria() {
-		return idCategoria;
+	public Long getCategoryId() {
+		return categoryId;
 	}
 
-	public void setIdCategoria(Long idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
 	}
 
+	public Long getGeneroId() {
+		return generoId;
+	}
+
+	public void setGeneroId(Long generoId) {
+		this.generoId = generoId;
+	}
+
+	
 	
 
 }

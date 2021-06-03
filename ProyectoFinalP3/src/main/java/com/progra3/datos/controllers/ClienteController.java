@@ -22,7 +22,7 @@ public class ClienteController {
 	@Autowired
 	ClienteRepository repository;
 
-	// mostrar lista
+	// Este método nos muestra la lista de los clientes que tenemos registrados
 	@GetMapping
 	public Iterable<ClienteEntity> findAll() {
 		Iterable<ClienteEntity> listaClientes = repository.findAll();
@@ -30,13 +30,13 @@ public class ClienteController {
 		return listaClientes;
 	}
 
-	// Crear cliente
+	// Este método nos permite crear nuevos clientes
 	@PostMapping
 	public ClienteEntity createCliente(@RequestBody ClienteEntity clientee) {
 		return repository.save(clientee);
 	}
 
-	// Buscar por id
+	// Nos permite buscar un cliente especifico usando el id
 	@GetMapping(value = "/{id}")
 	public ClienteEntity getClienteEntity(@PathVariable(name = "id") Long id) {
 
@@ -49,7 +49,8 @@ public class ClienteController {
 		return result;
 	}
 
-	// Actualizar
+	// Nos permite actualizar la información de los clientes seleccionandolos
+	// mediante el id
 
 	@PutMapping(value = "/{id}")
 	public ClienteEntity actualizarInfoCliente(@PathVariable(name = "id") Long id,
@@ -72,7 +73,7 @@ public class ClienteController {
 		return null;
 	}
 
-	// borrar
+	// Permite borrar clientes de nuestra lista.
 
 	@DeleteMapping(value = "/{id}")
 	public void borrarCliente(@PathVariable(name = "id") Long id) {

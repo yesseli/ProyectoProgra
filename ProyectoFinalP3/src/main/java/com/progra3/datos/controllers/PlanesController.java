@@ -22,7 +22,7 @@ public class PlanesController {
 	@Autowired
 	PlanesRepository repository;
 
-	// mostrar
+	// Muestra la lista de planes que tengamos
 	@GetMapping
 	public Iterable<PlanesEntity> findAll() {
 		Iterable<PlanesEntity> listPlanes = repository.findAll();
@@ -31,14 +31,14 @@ public class PlanesController {
 
 	}
 
-	// Crear
+	// Permite crear nuevos planes
 
 	@PostMapping
 	public PlanesEntity createPlan(@RequestBody PlanesEntity plan) {
 		return repository.save(plan);
 	}
 
-	// buscar
+	// Permite buscar un plan especifico por medio del id
 
 	@GetMapping(value = "/{id}")
 	public PlanesEntity getPlanesEntity(@PathVariable(name = "id") Long id) {
@@ -52,7 +52,7 @@ public class PlanesController {
 		return result;
 	}
 
-	// Actualizar
+	// Permite actualizar la informacion de los planes que tengamos
 
 	@PutMapping(value = "/{id}")
 	public PlanesEntity actualizarPlanes(@PathVariable(name = "id") Long id, @RequestBody PlanesEntity plan) {
@@ -74,11 +74,11 @@ public class PlanesController {
 		return null;
 
 	}
-	
-	//borrar
-	@DeleteMapping(value="/{id}")
-	public void borrarPlan(@PathVariable(name="id")Long id) {
-		 repository.deleteById(id);
+
+	// Permite borrar los planes que tengamos en nuestra lista
+	@DeleteMapping(value = "/{id}")
+	public void borrarPlan(@PathVariable(name = "id") Long id) {
+		repository.deleteById(id);
 	}
 
 }
